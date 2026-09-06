@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Academic Tracking System — Form 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HOME PAGE -->
+        <div id="home-page" class="page active">
+            <div class="hero">
+                <h1>🏫 Student Academic Tracking System</h1>
+                <p class="subtitle">Form 4 — Homework & Academic Marks</p>
+            </div>
+
+            <div class="role-cards">
+                <div class="role-card teacher-card" onclick="showPage('teacher-page')">
+                    <div class="icon">👩‍🏫</div>
+                    <h2>Teacher</h2>
+                    <p>Add homework & record student marks</p>
+                </div>
+
+                <div class="role-card parent-card" onclick="showPage('parent-page')">
+                    <div class="icon">👨‍👩‍👧</div>
+                    <h2>Parent</h2>
+                    <p>View homework & track child's progress</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEACHER PAGE -->
+        <div id="teacher-page" class="page">
+            <button class="back-btn" onclick="showPage('home-page')">← Back</button>
+            
+            <div class="page-header">
+                <h1>👩‍🏫 Teacher Dashboard</h1>
+                <div class="student-info-box">
+                    <p><strong>Student Name:</strong> Clara Paya Shaverroy</p>
+                    <p><strong>Form:</strong> 4 &nbsp;|&nbsp; <strong>Total Subjects:</strong> 7</p>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('add-hw')">📝 Add Homework</button>
+                <button class="tab-btn" onclick="showTab('add-marks')">📊 Add Marks</button>
+            </div>
+
+            <!-- ADD HOMEWORK -->
+            <div id="add-hw" class="tab-content active">
+                <div class="card-box">
+                    <h3>📝 Assign New Homework</h3>
+                    <form id="hw-form">
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <select id="hw-subject" required>
+                                <option value="">-- Select Subject --</option>
+                                <option>Bahasa Melayu</option>
+                                <option>Bahasa Inggeris</option>
+                                <option>Matematik</option>
+                                <option>Sains</option>
+                                <option>Sejarah</option>
+                                <option>Geografi</option>
+                                <option>Sains Komputer</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Task / Description</label>
+                            <textarea id="hw-task" required placeholder="Describe the homework task..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Due Date</label>
+                            <input type="date" id="hw-date" required>
+                        </div>
+
+                        <button type="submit" class="submit-btn">✅ Save Homework</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ADD MARKS -->
+            <div id="add-marks" class="tab-content">
+                <div class="card-box">
+                    <h3>📊 Record Student Marks</h3>
+                    <form id="marks-form">
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <select id="mark-subject" required>
+                                <option value="">-- Select Subject --</option>
+                                <option>Bahasa Melayu</option>
+                                <option>Bahasa Inggeris</option>
+                                <option>Matematik</option>
+                                <option>Sains</option>
+                                <option>Sejarah</option>
+                                <option>Geografi</option>
+                                <option>Sains Komputer</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Assessment Type</label>
+                            <select id="assessment-type" required>
+                                <option value="">-- Select Type --</option>
+                                <option>Monthly Test</option>
+                                <option>Quiz</option>
+                                <option>Class Work</option>
+                                <option>Progress Test</option>
+                                <option>Semester Exam</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mark Obtained (0 – 100)</label>
+                            <input type="number" id="mark-value" min="0" max="100" required placeholder="e.g. 85">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" id="mark-date" required>
+                        </div>
+
+                        <button type="submit" class="submit-btn">✅ Save Mark</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARENT PAGE -->
+        <div id="parent-page" class="page">
+            <button class="back-btn" onclick="showPage('home-page')">← Back</button>
+            
+            <div class="page-header">
+                <h1>👨‍👩‍👧 Parent Dashboard</h1>
+                <div class="student-info-box">
+                    <p><strong>Student Name:</strong> Clara Paya Shaverroy</p>
+                    <p><strong>Form:</strong> 4 &nbsp;|&nbsp; <strong>Total Subjects:</strong> 7</p>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showParentTab('view-hw')">📋 Homework List</button>
+                <button class="tab-btn" onclick="showParentTab('view-marks')">📊 Academic Marks</button>
+            </div>
+
+            <!-- VIEW HOMEWORK -->
+            <div id="view-hw" class="tab-content active">
+                <div class="card-box">
+                    <h3>📋 Homework Assignments</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filterHomework('all')">All</button>
+                        <button class="filter-btn" onclick="filterHomework('pending')">⏳ Pending</button>
+                        <button class="filter-btn" onclick="filterHomework('done')">✅ Completed</button>
+                    </div>
+                    <div id="homework-list">
+                        <p class="empty-msg">No homework assigned yet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW MARKS -->
+            <div id="view-marks" class="tab-content">
+                <div class="card-box">
+                    <h3>📊 Academic Marks Record</h3>
+                    <div id="marks-list">
+                        <p class="empty-msg">No marks recorded yet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
